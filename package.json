@@ -1,0 +1,41 @@
+{
+  "name": "shef-bin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --build",
+    "dev:css": "npx @tailwindcss/cli -i ./src/styles/index.css -o ./src/styles/output.css --watch",
+    "dev:server": "nodemon",
+    "start": "node ./dist/index.js",
+    "dev": "concurrently \"npm run dev:css\" \"npm run dev:server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gjyannDev/shef-bin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gjyannDev/shef-bin/issues"
+  },
+  "homepage": "https://github.com/gjyannDev/shef-bin#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.2.0",
+    "dotenv": "^17.2.0",
+    "nodemon": "^3.1.10",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
