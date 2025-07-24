@@ -4,6 +4,7 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
 import category_router from "./routers/category/category.router.js";
+import items_router from "./routers/items/items.router.js";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/", category_router)
+app.use("/", items_router)
 
 app.listen(PORT, () => {
   console.log(`Serving running on http://localhost:${PORT}`);

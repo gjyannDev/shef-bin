@@ -3,6 +3,6 @@ import { getCategoryAddForm } from "../../controllers/category/category.controll
 
 const category_router = Router();
 
-category_router.get("/categories", getCategoryAddForm);
+category_router.get("/categories/add", getCategoryAddForm);
 
 export default category_router;
