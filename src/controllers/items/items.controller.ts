@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Item } from "../../models/items.model.js";
+import { addActivityLogs } from "../../utils/logActivity.js";
 
 export async function getItemAddForm(req: Request, res: Response) {
   try {
@@ -22,8 +23,13 @@ export async function addNewItem(req: Request, res: Response) {
       notes,
       status,
     });
-
     await new_item.save();
+
+    addActivityLogs({
+      itemId: new_item._id,
+      action: "add",
+      details: `Add ${new_item.itemName} was added`,
+    });
 
     res.redirect("/");
   } catch (error) {

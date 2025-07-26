@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Category } from "../../models/category.model.js";
+import { addActivityLogs } from "../../utils/logActivity.js";
 
 export async function getCategoryAddForm(req: Request, res: Response) {
   try {
@@ -13,13 +14,18 @@ export async function addCategory(req: Request, res: Response) {
   try {
     const { categoryName, imageUrl, description } = req.body;
 
-    const newCategory = new Category({
+    const new_category = new Category({
       categoryName,
       imageUrl,
       description,
     });
+    await new_category.save();
 
-    await newCategory.save();
+    addActivityLogs({
+      itemId: new_category._id,
+      action: "add",
+      details: `Add ${new_category.categoryName} was added`,
+    });
 
     res.redirect("/");
   } catch (error) {
