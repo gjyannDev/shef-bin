@@ -3,9 +3,10 @@ import express from "express";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import category_router from "./routers/category/category.router.js";
-import items_router from "./routers/items/items.router.js";
-import { connectToDatabase } from "./services/db/mongo.connection.js";
 import homepage_router from "./routers/homepage.routers.js";
+import items_router from "./routers/items/items.router.js";
+import log_router from "./routers/recentActivity/log.routers.js";
+import { connectToDatabase } from "./services/db/mongo.connection.js";
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use("/", homepage_router);
 //Other routers
 app.use("/categories", category_router);
 app.use("/items", items_router);
+app.use("/", log_router);
 
 //Connecting to mongoDB
 connectToDatabase().then(() => {
