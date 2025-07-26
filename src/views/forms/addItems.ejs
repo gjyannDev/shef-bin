@@ -16,14 +16,14 @@
           Add New Item
         </h1>
       </div>
-      <form method="POST" action="/new" class="flex flex-col gap-8 py-14">
+      <form method="POST" action="/items/add" class="flex flex-col gap-8 py-14">
         <div class="w-full max-w-3xl flex flex-col lg:flex-row gap-6">
           <div class="flex flex-col gap-2 flex-1">
             <label for="itemName" class="font-bold text-lg">Item Name</label>
             <input
               id="itemName"
               type="text"
-              name="name"
+              name="itemName"
               placeholder="Chicken Breast"
               class="h-12 rounded-sm shadow-md px-4 border border-gray-300 placeholder:text-[var(--base-black)] focus:ring-2"
               required
@@ -85,7 +85,7 @@
             >
             <input
               id="expirationDate"
-              type="text"
+              type="date"
               name="expirationDate"
               placeholder="june 6, 2026"
               class="h-12 rounded-sm shadow-md px-4 border border-gray-300 placeholder:text-[var(--base-black)] focus:ring-2"
