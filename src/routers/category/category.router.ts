@@ -1,8 +1,12 @@
 import { Router } from "express";
-import { getCategoryAddForm } from "../../controllers/category/category.controller.js";
+import {
+  addCategory,
+  getCategoryAddForm,
+} from "../../controllers/category/category.controller.js";
 
 const category_router = Router();
 
-category_router.get("/categories/add", getCategoryAddForm);
+category_router.get("/add", getCategoryAddForm);
+category_router.post("/add", addCategory);
 
 export default category_router;
