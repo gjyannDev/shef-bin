@@ -23,7 +23,7 @@ export async function addNewItem(req: Request, res: Response) {
       status,
     });
 
-    const savedItem = await new_item.save();
+    await new_item.save();
 
     res.redirect("/");
   } catch (error) {
