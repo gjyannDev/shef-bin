@@ -4,6 +4,7 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import category_router from "./routers/category/category.router.js";
 import homepage_router from "./routers/homepage.routers.js";
+import inventory_router from "./routers/inventory/inventory.routers.js";
 import items_router from "./routers/items/items.router.js";
 import log_router from "./routers/recentActivity/log.routers.js";
 import { connectToDatabase } from "./services/db/mongo.connection.js";
@@ -32,6 +33,7 @@ app.use("/", homepage_router);
 app.use("/categories", category_router);
 app.use("/items", items_router);
 app.use("/", log_router);
+app.use("/inventory", inventory_router);
 
 //Connecting to mongoDB
 connectToDatabase().then(() => {

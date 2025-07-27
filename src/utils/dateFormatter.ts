@@ -15,3 +15,14 @@ export function formatPrettyDate(date: Date) {
     optionsDate
   )} | ${date.toLocaleTimeString("en-US", optionsTime)}`;
 }
+
+export function formatDate(date: Date) {
+  const raw_date = new Date(date);
+  const formatted_date = raw_date.toLocaleDateString("en-US", {
+    month: "2-digit",
+    day: "2-digit",
+    year: "numeric",
+  });
+
+  return formatted_date;
+}

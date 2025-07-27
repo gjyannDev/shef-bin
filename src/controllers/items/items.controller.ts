@@ -12,17 +12,28 @@ export async function getItemAddForm(req: Request, res: Response) {
 
 export async function addNewItem(req: Request, res: Response) {
   try {
-    const { itemName, category, quantity, expirationDate, notes, status } =
-      req.body;
+    const {
+      itemName,
+      category,
+      quantity,
+      unit,
+      expirationDate,
+      notes,
+      status,
+    } = req.body;
 
     const new_item = new Item({
       itemName,
       category,
       quantity,
+      unit,
       expirationDate,
       notes,
       status,
     });
+
+    // new_item.quantity = `${quantity}`
+
     await new_item.save();
 
     addActivityLogs({
