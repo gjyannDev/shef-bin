@@ -15,6 +15,11 @@ const item_schema = new mongoose.Schema(
       required: [true, "Quantity is required"],
       min: [0, "Quantity cannot be negative"],
     },
+    unit: {
+      type: String,
+      required: [true, "Unit is required"],
+      enum: ["pcs", "pc", "kg", "g", "l", "ml", "packs", "bottles", "bunch"],
+    },
     expirationDate: {
       type: Date,
       required: [true, "Expiration date is required"],

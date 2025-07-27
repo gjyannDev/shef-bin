@@ -70,14 +70,53 @@
         <div class="w-full max-w-3xl flex flex-col lg:flex-row gap-6">
           <div class="flex flex-col gap-2 flex-1">
             <label for="quantity" class="font-bold text-lg">Quantity</label>
-            <input
-              id="quantity"
-              type="text"
-              name="quantity"
-              placeholder="1 kg"
-              class="h-12 rounded-sm shadow-md px-4 border border-gray-300 placeholder:text-[var(--base-black)] focus:ring-2"
-              required
-            />
+            <div class="flex gap-2">
+              <input
+                id="quantity"
+                type="text"
+                name="quantity"
+                placeholder="1 kg"
+                class="h-12 rounded-sm shadow-md px-4 border border-gray-300 placeholder:text-[var(--base-black)] focus:ring-2"
+                required
+              />
+              <div class="relative">
+                <select
+                  id="unit"
+                  name="unit"
+                  class="h-12 appearance-none rounded-sm shadow-md border border-gray-300 px-4 pr-10 focus:ring-2 bg-white text-[var(--base-black)]"
+                  required
+                >
+                  <option value="" disabled selected>Select a unit</option>
+                  <option value="pcs">pcs</option>
+                  <option value="pc">pc</option>
+                  <option value="kg">kg</option>
+                  <option value="g">g</option>
+                  <option value="l">l</option>
+                  <option value="ml">ml</option>
+                  <option value="packs">packs</option>
+                  <option value="bottles">bottles</option>
+                  <option value="bunch">bunch</option>
+                </select>
+
+                <!-- Chevron icon -->
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-3 flex items-center"
+                >
+                  <svg
+                    class="w-4 h-4 text-gray-500"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="flex flex-col gap-2 flex-1">
             <label for="expirationDate" class="font-bold text-lg"
@@ -115,11 +154,10 @@
                 required
               >
                 <option value="" disabled selected>Select a status</option>
-                <option value="meat">Meat</option>
-                <option value="vegetable">Vegetable</option>
-                <option value="dairy">Dairy</option>
-                <option value="beverage">Beverage</option>
-                <option value="snack">Snack</option>
+                <option value="in stock">In Stock</option>
+                <option value="low stock">Low Stock</option>
+                <option value="expired">Expired</option>
+                <option value="out of stock">Out of Stock</option>
               </select>
 
               <!-- Chevron icon -->
