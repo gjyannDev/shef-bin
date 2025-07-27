@@ -1,29 +1,36 @@
 import mongoose from "mongoose";
 
-const item_schema = new mongoose.Schema({
-  itemName: {
-    type: String,
-    required: true,
+const item_schema = new mongoose.Schema(
+  {
+    itemName: {
+      type: String,
+      required: [true, "Item name is required"],
+    },
+    category: {
+      type: String,
+      required: true,
+    },
+    quantity: {
+      type: Number,
+      required: [true, "Quantity is required"],
+      min: [0, "Quantity cannot be negative"],
+    },
+    expirationDate: {
+      type: Date,
+      required: [true, "Expiration date is required"],
+    },
+    notes: {
+      type: String,
+      default: "",
+    },
+    status: {
+      type: String,
+      required: true,
+      enum: ["in stock", "low stock", "expired", "out of stock"],
+      default: "in stock",
+    },
   },
-  category: {
-    type: String,
-    required: true,
-  },
-  quantity: {
-    type: Number,
-    required: true,
-  },
-  expirationDate: {
-    type: Date,
-    required: true,
-  },
-  notes: {
-    type: String,
-  },
-  status: {
-    type: String,
-    required: true,
-  },
-});
+  { timestamps: true }
+);
 
 export const Item = mongoose.model("Items", item_schema);
