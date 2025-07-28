@@ -31,9 +31,6 @@ export async function addNewItem(req: Request, res: Response) {
       notes,
       status,
     });
-
-    // new_item.quantity = `${quantity}`
-
     await new_item.save();
 
     addActivityLogs({
@@ -45,6 +42,9 @@ export async function addNewItem(req: Request, res: Response) {
     res.redirect("/");
   } catch (error) {
     console.error(error);
-    res.status(501);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to add items",
+    });
   }
 }
