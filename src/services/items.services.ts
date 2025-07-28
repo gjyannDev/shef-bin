@@ -22,7 +22,11 @@ export async function getFilteredItems({
 
     if (category) {
       query = query.where("category").equals(category);
+    } else if (status) {
+      query = query.where("status").equals(status)
     }
+
+    
 
     return await query.exec();
 
