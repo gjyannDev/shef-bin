@@ -20,6 +20,6 @@ export async function connectToDatabase() {
 
   } catch (error) {
     console.error("MongoDB connection failed:", error);
-    throw error;
+    throw Error;
   }
 }
