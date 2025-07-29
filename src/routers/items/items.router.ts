@@ -7,7 +7,6 @@ import {
 const items_router = Router();
 
 items_router.get("/add", getItemAddForm);
-
 items_router.post("/add", addNewItem);
 
 export default items_router;

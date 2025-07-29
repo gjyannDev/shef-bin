@@ -23,15 +23,22 @@ export async function getFilteredItems({
     if (category) {
       query = query.where("category").equals(category);
     } else if (status) {
-      query = query.where("status").equals(status)
+      query = query.where("status").equals(status);
     }
 
-    
-
     return await query.exec();
-
   } catch (error) {
     console.error("Error fetching items: ", error);
     throw new Error("Failed to fetch filtered items");
+  }
+}
+
+export async function getItemsById(id: string) {
+  try {
+    const item = await Item.findById(id);
+
+    return item;
+  } catch (error) {
+    console.error("Error fetching item by id", error);
   }
 }

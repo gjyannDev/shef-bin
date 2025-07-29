@@ -138,26 +138,39 @@
 
       <!-- Inventory Grid -->
       <div class="grid grid-cols-4 gap-4">
-        <% items.forEach(activity => { %>
-        <div
-          class="flex flex-col justify-between gap-4 border py-5 px-4 rounded-lg shadow-md"
-        >
-          <div>
-            <h1 class="font-bold text-2xl"><%= activity.itemName %></h1>
-            <p class="text-sm"><%= activity.category %></p>
-            <p><%= activity.quantity %> <%= activity.unit %></p>
-          </div>
-          <div>
-            <p>Exp Date: <%= activity.formattedTime %></p>
-            <p>Status: <%= activity.status %></p>
-          </div>
-          <div class="flex gap-4">
-            <button
-              class="bg-[var(--primary-clr)] text-[var(--base-white)] px-8 py-1.5 rounded-sm"
-            >
-              Edit
-            </button>
-            <button class="px-8 py-1.5 rounded-sm">Delete</button>
+        <% items.forEach(item => { %>
+        <div class="relative border rounded-lg shadow-md overflow-hidden group">
+          <!-- Card is a link (except buttons) -->
+          <a
+            href="/inventory/details/<%= item._id %>"
+            class="block p-5 hover:bg-gray-100 transition"
+          >
+            <h1 class="text-2xl font-bold mb-1"><%= item.itemName %></h1>
+            <p class="text-sm text-gray-600"><%= item.category %></p>
+            <p class="text-sm mb-2"><%= item.quantity %> <%= item.unit %></p>
+            <p class="text-xs text-gray-500">
+              Exp Date: <%= item.formattedTime %>
+            </p>
+            <p class="text-xs">Status: <%= item.status %></p>
+          </a>
+
+          <!-- Buttons (outside of <a>, not part of clickable card) -->
+          <div class="flex gap-2 px-5 pb-4 pt-2">
+            <a href="/inventory/edit/<%= item._id %>">
+              <button
+                class="bg-[var(--primary-clr)] rounded-sm text-white px-8 py-1"
+              >
+                Edit
+              </button>
+            </a>
+            <form action="/inventory/delete/<%= item._id %>" method="POST">
+              <button
+                type="submit"
+                class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700"
+              >
+                Delete
+              </button>
+            </form>
           </div>
         </div>
         <% }); %>

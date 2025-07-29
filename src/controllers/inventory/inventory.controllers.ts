@@ -3,7 +3,7 @@ import {
   getAllItems,
   getFilteredItems,
 } from "../../services/items.services.js";
-import { formatDate } from "../../utils/dateFormatter.js";
+import { formatDateMonthYear } from "../../utils/dateFormatter.js";
 
 export async function getInventoryPage(req: Request, res: Response) {
   try {
@@ -12,7 +12,7 @@ export async function getInventoryPage(req: Request, res: Response) {
     return res.render("pages/inventory", {
       items: items?.map((item) => ({
         ...item.toObject(),
-        formattedTime: formatDate(item.expirationDate),
+        formattedTime: formatDateMonthYear(item.expirationDate),
       })),
     });
   } catch (error) {
@@ -39,7 +39,7 @@ export async function filteredInventoryPage(req: Request, res: Response) {
     return res.render("pages/inventory", {
       items: items?.map((item) => ({
         ...item.toObject(),
-        formattedTime: formatDate(item.expirationDate),
+        formattedTime: formatDateMonthYear(item.expirationDate),
       })),
     });
 

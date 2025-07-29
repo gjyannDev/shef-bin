@@ -16,7 +16,7 @@ export function formatPrettyDate(date: Date) {
   )} | ${date.toLocaleTimeString("en-US", optionsTime)}`;
 }
 
-export function formatDate(date: Date) {
+export function formatDateMonthYear(date: Date) {
   const raw_date = new Date(date);
   const formatted_date = raw_date.toLocaleDateString("en-US", {
     month: "2-digit",
