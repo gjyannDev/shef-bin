@@ -16,13 +16,14 @@
           Edit Item
         </h1>
       </div>
-      <form method="POST" action="/items/edit" class="flex flex-col gap-8 py-14">
+      <form method="POST" action="/inventory/edit" class="flex flex-col gap-8 py-14">
         <div class="w-full max-w-3xl flex flex-col lg:flex-row gap-6">
           <div class="flex flex-col gap-2 flex-1">
             <label for="itemName" class="font-bold text-lg">Item Name</label>
             <input
               id="itemName"
               type="text"
+              value="<%= item.itemName %>"
               name="itemName"
               placeholder="Chicken Breast"
               class="h-12 rounded-sm shadow-md px-4 border border-gray-300 placeholder:text-[var(--base-black)] focus:ring-2"
@@ -39,12 +40,12 @@
                 class="h-12 w-full appearance-none rounded-sm shadow-md border border-gray-300 px-4 pr-10 focus:ring-2 bg-white text-[var(--base-black)]"
                 required
               >
-                <option value="" disabled selected>Select a category</option>
-                <option value="meat">Meat</option>
-                <option value="vegetable">Vegetable</option>
-                <option value="dairy">Dairy</option>
-                <option value="beverage">Beverage</option>
-                <option value="snack">Snack</option>
+                <option value="" disabled>Select a category</option>
+                <option value="meat" <%= item.category === 'meat' ? 'selected' : '' %>>Meat</option>
+                <option value="vegetable" <%= item.category === 'vegetable' ? 'selected' : '' %>>Vegetable</option>
+                <option value="dairy" <%= item.category === 'dairy' ? 'selected' : '' %>>Dairy</option>
+                <option value="beverage" <%= item.category === 'beverage' ? 'selected' : '' %>>Beverage</option>
+                <option value="snack" <%= item.category === 'snack' ? 'selected' : '' %>>Snack</option>
               </select>
 
               <!-- Chevron icon -->
@@ -74,6 +75,7 @@
               <input
                 id="quantity"
                 type="text"
+                value="<%= item.quantity %>"
                 name="quantity"
                 placeholder="1 kg"
                 class="h-12 rounded-sm shadow-md px-4 border border-gray-300 placeholder:text-[var(--base-black)] focus:ring-2"
@@ -86,16 +88,16 @@
                   class="h-12 appearance-none rounded-sm shadow-md border border-gray-300 px-4 pr-10 focus:ring-2 bg-white text-[var(--base-black)]"
                   required
                 >
-                  <option value="" disabled selected>Select a unit</option>
-                  <option value="pcs">pcs</option>
-                  <option value="pc">pc</option>
-                  <option value="kg">kg</option>
-                  <option value="g">g</option>
-                  <option value="l">l</option>
-                  <option value="ml">ml</option>
-                  <option value="packs">packs</option>
-                  <option value="bottles">bottles</option>
-                  <option value="bunch">bunch</option>
+                  <option value="" disabled>Select a unit</option>
+                  <option value="pcs" <%= item.unit === 'pcs' ? 'selected' : '' %>>pcs</option>
+                  <option value="pc" <%= item.unit === 'pc' ? 'selected' : '' %>>pc</option>
+                  <option value="kg" <%= item.unit === 'kg' ? 'selected' : '' %>>kg</option>
+                  <option value="g" <%= item.unit === 'g' ? 'selected' : '' %>>g</option>
+                  <option value="l" <%= item.unit === 'l' ? 'selected' : '' %>>l</option>
+                  <option value="ml" <%= item.unit === 'ml' ? 'selected' : '' %>>ml</option>
+                  <option value="packs" <%= item.unit === 'packs' ? 'selected' : '' %>>packs</option>
+                  <option value="bottles" <%= item.unit === 'bottles' ? 'selected' : '' %>>bottles</option>
+                  <option value="bunch" <%= item.unit === 'bunch' ? 'selected' : '' %>>bunch</option>
                 </select>
 
                 <!-- Chevron icon -->
@@ -126,6 +128,7 @@
               id="expirationDate"
               type="date"
               name="expirationDate"
+              value="<%= item.expirationDate.toISOString().split('T')[0] %>"
               placeholder="june 6, 2026"
               class="h-12 rounded-sm shadow-md px-4 border border-gray-300 placeholder:text-[var(--base-black)] focus:ring-2"
               required
@@ -142,7 +145,7 @@
               name="notes"
               class="w-full max-w-lg rounded-sm shadow-md placeholder:text-[var(--base-black)] focus:ring-2 border border-gray-300 lg:max-w-sm px-4 py-3 resize-none"
               required
-            ></textarea>
+            ><%= item.notes %></textarea>
           </div>
           <div class="flex flex-col gap-2 flex-1">
             <label for="status" class="font-bold text-lg">Status</label>
@@ -153,11 +156,11 @@
                 class="h-12 w-full appearance-none rounded-sm shadow-md border border-gray-300 px-4 pr-10 focus:ring-2 bg-white text-[var(--base-black)]"
                 required
               >
-                <option value="" disabled selected>Select a status</option>
-                <option value="in stock">In Stock</option>
-                <option value="low stock">Low Stock</option>
-                <option value="expired">Expired</option>
-                <option value="out of stock">Out of Stock</option>
+                <option value="" disabled>Select a status</option>
+                <option value="in stock" <%= item.status === 'in stock' ? 'selected' : '' %>>In Stock</option>
+                <option value="low stock" <%= item.status === 'low stock' ? 'selected' : '' %>>Low Stock</option>
+                <option value="expired" <%= item.status === 'expired' ? 'selected' : '' %>>Expired</option>
+                <option value="out of stock" <%= item.status === 'out of stock' ? 'selected' : '' %>>Out of Stock</option>
               </select>
 
               <!-- Chevron icon -->
@@ -190,7 +193,7 @@
           <button
             class="w-fit font-semibold bg-[var(--primary-clr)] px-8 py-2 rounded-sm cursor-pointer"
           >
-            Add Item
+            Update Item
           </button>
         </div>
       </form>
