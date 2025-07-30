@@ -142,7 +142,7 @@
         <div class="relative border rounded-lg shadow-md overflow-hidden group">
           <!-- Card is a link (except buttons) -->
           <a
-            href="/inventory/details/<%= item._id %>"
+            href="/items/details/<%= item._id %>"
             class="block p-5 hover:bg-gray-100 transition"
           >
             <h1 class="text-2xl font-bold mb-1"><%= item.itemName %></h1>
@@ -156,14 +156,14 @@
 
           <!-- Buttons (outside of <a>, not part of clickable card) -->
           <div class="flex gap-2 px-5 pb-4 pt-2">
-            <a href="/inventory/edit/<%= item._id %>">
+            <a href="/items/edit/<%= item._id %>">
               <button
                 class="bg-[var(--primary-clr)] rounded-sm text-white px-8 py-1"
               >
                 Edit
               </button>
             </a>
-            <form action="/inventory/delete/<%= item._id %>" method="POST">
+            <form action="/items/delete/<%= item._id %>?_method=DELETE" method="POST">
               <button
                 type="submit"
                 class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700"

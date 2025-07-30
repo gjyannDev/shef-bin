@@ -141,3 +141,26 @@ export async function updateItems(req: Request, res: Response) {
     throw new Error("Error updating item");
   }
 }
+
+export async function deleteItem(req: Request, res: Response) {
+  try {
+    const id = req.params.id;
+
+    const deleted_item = await Item.findByIdAndDelete(id);
+
+    if (!deleted_item) {
+      return res.status(404).send("Item not found");
+    }
+
+    await addActivityLogs({
+      itemId: deleted_item._id,
+      action: "delete",
+      details: `Item "${deleted_item.itemName}" was deleted.`,
+    });
+
+    res.redirect("/inventory");
+  } catch (error) {
+    console.error("Error deleting an item: ", error);
+    throw new Error("Error deleting an item");
+  }
+}

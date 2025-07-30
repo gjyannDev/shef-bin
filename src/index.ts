@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import express from "express";
+import methodOverride from "method-override";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import category_router from "./routers/category/category.router.js";
@@ -16,6 +17,8 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(methodOverride("_method"));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
